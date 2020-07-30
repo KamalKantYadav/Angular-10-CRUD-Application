@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-7">
+            <h3>{{formtype}} </h3>
+            <form class="form">
+                <p><input type="text" [(ngModel)]="first_name" name="first_name" class="form-control" placeholder="First name"></p>
+                <p><input type="text" [(ngModel)]="last_name" name="last_name" class="form-control"  placeholder="Last name"></p>
+                <p><input type="text" [(ngModel)]="age" name="age" class="form-control"  placeholder="Age"></p>
+                <div class="btn-group btn-group-sm">
+                    <button type="button" (click)="addItem()" *ngIf="show" class="btn btn-success">Submit</button>
+                    <button type="button" (click)="updateItem()" *ngIf="!show" class="btn btn-primary">Update</button>
+                    <button type="button" (click)="refresh_items()" class="btn btn-link">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-5">
+            <h3>User List</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Age</th>
+                        <th colspan=2>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of items">
+                        <td>{{item.first_name}}</td>
+                        <td>{{item.last_name}}</td>
+                        <td>{{item.age}}</td>
+                        <td><button type="button" class="btn btn-info btn-sm" (click)="editTodo(item)"><i class="fa fa-edit"></i></button></td>
+
+                        <td><button type="button"  class="btn btn-danger btn-sm" (click)="deleteItem(item.first_name)"><i class="fa fa-trash-o"></i></button></td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
